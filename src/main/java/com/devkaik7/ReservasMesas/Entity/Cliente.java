@@ -18,7 +18,6 @@ public class Cliente {
     @OneToOne(mappedBy = "cliente")
     private Reserva reserva;
 
-
     public Cliente() {
     }
 

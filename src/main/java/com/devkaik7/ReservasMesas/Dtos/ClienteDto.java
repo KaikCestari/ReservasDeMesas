@@ -1,11 +1,14 @@
 package com.devkaik7.ReservasMesas.Dtos;
 
+import com.devkaik7.ReservasMesas.Entity.Reserva;
+
 public class ClienteDto {
 
    private Long id;
     private String name;
     private String email;
     private String telefone;
+    private Reserva reserva;
 
     public ClienteDto() {
     }
@@ -47,5 +50,13 @@ public class ClienteDto {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public Reserva getReserva() {
+        return reserva;
+    }
+
+    public void setReserva(Reserva reserva) {
+        this.reserva = reserva;
     }
 }
