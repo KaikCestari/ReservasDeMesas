@@ -1,6 +1,7 @@
 package com.devkaik7.ReservasMesas.Entity;
 
 import com.devkaik7.ReservasMesas.Status.StatusMesa;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.time.LocalTime;
@@ -12,9 +13,11 @@ public class Reserva {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalTime horario;
+    @Enumerated(EnumType.STRING) // <-- isso faz salvar como texto
     private StatusMesa statusMesa;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cliente_id")
+    @JsonManagedReference
     private Cliente cliente;
 
     public Reserva() {

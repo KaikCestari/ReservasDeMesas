@@ -8,7 +8,7 @@ public class ClienteDto {
     private String name;
     private String email;
     private String telefone;
-    private Reserva reserva;
+    private ReservaDto reserva;
 
     public ClienteDto() {
     }
@@ -52,11 +52,11 @@ public class ClienteDto {
         this.telefone = telefone;
     }
 
-    public Reserva getReserva() {
+    public ReservaDto getReserva() {
         return reserva;
     }
 
-    public void setReserva(Reserva reserva) {
+    public void setReserva(ReservaDto reserva) {
         this.reserva = reserva;
     }
 }

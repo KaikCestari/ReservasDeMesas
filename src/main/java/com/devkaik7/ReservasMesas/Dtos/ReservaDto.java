@@ -6,50 +6,52 @@ import com.devkaik7.ReservasMesas.Status.StatusMesa;
 import java.time.LocalTime;
 
 public class ReservaDto {
-    private Long id;
-    private LocalTime horario;
-    private StatusMesa statusMesa;
-    private Cliente cliente;
+
+        private String horario;
+        private String statusMesa;
+        private ClienteDto cliente;
+      private Long clienteId;
 
     public ReservaDto() {
     }
 
-    public ReservaDto(Long id, LocalTime horario, StatusMesa statusMesa, Cliente cliente) {
-        this.id = id;
+    public ReservaDto(String horario, String statusMesa) {
         this.horario = horario;
         this.statusMesa = statusMesa;
-        this.cliente = cliente;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public LocalTime getHorario() {
+    public String getHorario() {
         return horario;
     }
 
-    public void setHorario(LocalTime horario) {
+    public void setHorario(String horario) {
         this.horario = horario;
     }
 
-    public StatusMesa getStatusMesa() {
+    public String getStatusMesa() {
         return statusMesa;
     }
 
-    public void setStatusMesa(StatusMesa statusMesa) {
+    public void setStatusMesa(String statusMesa) {
         this.statusMesa = statusMesa;
     }
 
-    public Cliente getCliente() {
+    public ClienteDto getCliente() {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
+    public void setCliente(ClienteDto cliente) {
         this.cliente = cliente;
     }
+
+    public Long getClienteId() {
+        return clienteId;
+    }
+
+    public void setClienteId(Long clienteId) {
+        this.clienteId = clienteId;
+    }
 }
+
+
+
