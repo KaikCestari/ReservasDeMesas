@@ -2,6 +2,8 @@ package com.devkaik7.ReservasMesas.Entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "tb_mesas")
 public class Mesas {
@@ -10,6 +12,8 @@ public class Mesas {
     private Long id;
     private Long numero;
     private Long capacidade;
+    @OneToMany(mappedBy = "mesas")
+    private List<Reserva> reservas;
 
     public Mesas() {
     }

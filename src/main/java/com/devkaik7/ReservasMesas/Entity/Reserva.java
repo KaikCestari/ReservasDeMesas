@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.time.LocalTime;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_reserva")
@@ -19,6 +20,9 @@ public class Reserva {
     @JoinColumn(name = "cliente_id", unique = true)
     @JsonManagedReference
     private Cliente cliente;
+   @ManyToOne
+    @JoinColumn(name = "mesa_id")
+    private Mesas mesas;
 
     public Reserva() {
     }
@@ -29,6 +33,7 @@ public class Reserva {
         this.statusMesa = statusMesa;
         this.cliente = cliente;
     }
+
 
     public Long getId() {
         return id;
@@ -61,4 +66,6 @@ public class Reserva {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+
+
 }
