@@ -25,4 +25,9 @@ public class ReservaController {
     public List<ReservaDto> listarReservas(){
         return services.listarReservas();
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletar(@PathVariable Long id) {
+        services.deletarReserva(id);
+        return ResponseEntity.noContent().build(); // 204 sem corpo
+    }
 }

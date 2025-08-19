@@ -15,8 +15,8 @@ public class Reserva {
     private LocalTime horario;
     @Enumerated(EnumType.STRING) // <-- isso faz salvar como texto
     private StatusMesa statusMesa;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "cliente_id")
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name = "cliente_id", unique = true)
     @JsonManagedReference
     private Cliente cliente;
 

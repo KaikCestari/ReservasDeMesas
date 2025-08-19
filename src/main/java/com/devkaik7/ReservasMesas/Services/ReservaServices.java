@@ -7,6 +7,7 @@ import com.devkaik7.ReservasMesas.Entity.Reserva;
 import com.devkaik7.ReservasMesas.Repository.ClienteRepository;
 import com.devkaik7.ReservasMesas.Repository.ReservaRepository;
 import com.devkaik7.ReservasMesas.Status.StatusMesa;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,10 +31,8 @@ public class  ReservaServices {
        return reservaRepository.save(reserva);
    }
 
-
     public List<ReservaDto> listarReservas() {
         List<Reserva> reservas = reservaRepository.findAll();
-
         return reservas.stream()
                 .map(r -> new ReservaDto(
                         r.getHorario().toString(),
@@ -43,5 +42,20 @@ public class  ReservaServices {
                 ))
                 .toList();
     }
-
+    @Transactional
+    public void deletarReserva(Long id) {
+        if (id == null) {
+            throw new IllegalArgumentException("ID não pode ser nulo.");
+        }
+        Reserva reserva = reservaRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Reserva não encontrada com ID: " + id));
+        // Desassocia a reserva do cliente antes de deletar
+        Cliente cliente = reserva.getCliente();
+        if (cliente != null) {
+            cliente.setReserva(null);
+        }
+        // Apaga apenas a reserva
+        reservaRepository.delete(reserva);
+    }
 }
+
