@@ -11,20 +11,20 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SecurityConfig {
 
-
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+                .csrf(csrf -> csrf.disable())
+                .headers(headers -> headers.frameOptions(frame -> frame.disable())) 
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/h2-console/**").permitAll()
-                        .anyRequest().authenticated()
-                )
-                .csrf(csrf -> csrf.disable()) // necessário para H2
-                .headers(headers -> headers.frameOptions(frame -> frame.disable())) // H2 precisa
-                .formLogin(form -> form.loginPage("/login").permitAll()); // nova forma de habilitar login
+                        .anyRequest().permitAll()
+                );
 
         return http.build();
     }
 
-
 }
+
+
+
