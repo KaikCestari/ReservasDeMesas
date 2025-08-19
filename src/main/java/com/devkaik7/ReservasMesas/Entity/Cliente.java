@@ -1,6 +1,7 @@
 package com.devkaik7.ReservasMesas.Entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
@@ -17,7 +18,7 @@ public class Cliente {
     @NotBlank(message = "Digite seu telefone")
     private String telefone;
     @OneToOne(mappedBy = "cliente")
-    @JsonBackReference
+    @JsonIgnore
     private Reserva reserva;
 
     public Cliente() {

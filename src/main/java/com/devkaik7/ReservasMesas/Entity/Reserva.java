@@ -22,7 +22,6 @@ public class Reserva {
     private Cliente cliente;
    @ManyToOne
     @JoinColumn(name = "mesa_id")
-   @JsonManagedReference
     private Mesas mesas;
 
     public Reserva() {

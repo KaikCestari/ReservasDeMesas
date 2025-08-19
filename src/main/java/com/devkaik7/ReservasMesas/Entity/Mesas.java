@@ -12,8 +12,7 @@ public class Mesas {
     private Long id;
     private Long numero;
     private Long capacidade;
-    @OneToMany(mappedBy = "mesas")
-    private List<Reserva> reservas;
+
 
     public Mesas() {
     }
@@ -48,18 +47,4 @@ public class Mesas {
         this.capacidade = capacidade;
     }
 
-    public List<Reserva> getReservas() {
-        return reservas;
-    }
-
-    public void setReservas(List<Reserva> reservas) {
-        this.reservas = reservas;
-    }
-
-    public Mesas(Long id, Long numero, Long capacidade, List<Reserva> reservas) {
-        this.id = id;
-        this.numero = numero;
-        this.capacidade = capacidade;
-        this.reservas = reservas;
-    }
 }
