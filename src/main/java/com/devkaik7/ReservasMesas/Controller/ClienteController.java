@@ -28,5 +28,11 @@ public class ClienteController {
     public List<ClienteDto> listar(){
 return  services.listarCliente();
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletar(@PathVariable Long id){
+        services.deletar(id);
+        return ResponseEntity.noContent().build();
+    }
+
 
 }

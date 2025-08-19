@@ -37,5 +37,15 @@ public class ClienteServices {
                .map(p-> new ClienteDto(p.getId(),p.getName(),p.getEmail(),p.getTelefone()))
                .toList();
     }
+    public void deletar(Long id){
+        if (id == null){
+            throw new RuntimeException("Id nao pode ser nulo");
+        }
+        Cliente cliente = clienteRepository.findById(id)
+                .orElseThrow(()-> new IllegalArgumentException("Impossivel encontrar cliente"));
+        clienteRepository.delete(cliente);
+    }
+
+
 
 }
