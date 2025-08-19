@@ -22,6 +22,7 @@ public class Reserva {
     private Cliente cliente;
    @ManyToOne
     @JoinColumn(name = "mesa_id")
+   @JsonManagedReference
     private Mesas mesas;
 
     public Reserva() {
@@ -67,5 +68,11 @@ public class Reserva {
         this.cliente = cliente;
     }
 
+    public Mesas getMesas() {
+        return mesas;
+    }
 
+    public void setMesas(Mesas mesas) {
+        this.mesas = mesas;
+    }
 }

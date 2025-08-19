@@ -10,16 +10,22 @@ public class ReservaDto {
         private String horario;
         private String statusMesa;
         private String clienteName;
-      private Long clienteId;
+        private Long mesaId;
+        private Long clienteId;
 
     public ReservaDto() {
     }
 
-    public ReservaDto(String horario, String statusMesa, String clienteName, Long clienteId) {
+    public ReservaDto(String horario, String statusMesa, String clienteName, Long mesaId, Long clienteId) {
         this.horario = horario;
         this.statusMesa = statusMesa;
         this.clienteName = clienteName;
+        this.mesaId = mesaId;
         this.clienteId = clienteId;
+    }
+
+    public ReservaDto(String horario) {
+        this.horario = horario;
     }
 
     public String getHorario() {
@@ -39,7 +45,6 @@ public class ReservaDto {
     }
 
 
-
     public Long getClienteId() {
         return clienteId;
     }
@@ -52,8 +57,17 @@ public class ReservaDto {
         return clienteName;
     }
 
+
     public void setClienteName(String clienteName) {
         this.clienteName = clienteName;
+    }
+
+    public Long getMesaId() {
+        return mesaId;
+    }
+
+    public void setMesaId(Long mesaId) {
+        this.mesaId = mesaId;
     }
 }
 
