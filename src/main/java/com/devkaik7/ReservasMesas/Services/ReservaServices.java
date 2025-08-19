@@ -1,5 +1,6 @@
 package com.devkaik7.ReservasMesas.Services;
 
+import com.devkaik7.ReservasMesas.Dtos.ClienteDto;
 import com.devkaik7.ReservasMesas.Dtos.ReservaDto;
 import com.devkaik7.ReservasMesas.Entity.Cliente;
 import com.devkaik7.ReservasMesas.Entity.Reserva;
@@ -10,9 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalTime;
+import java.util.List;
 
 @Service
-public class ReservaServices {
+public class  ReservaServices {
     @Autowired
     public ReservaRepository reservaRepository;
     @Autowired
@@ -27,4 +29,19 @@ public class ReservaServices {
        reserva.setStatusMesa(StatusMesa.valueOf(dto.getStatusMesa().toUpperCase()));
        return reservaRepository.save(reserva);
    }
+
+
+    public List<ReservaDto> listarReservas() {
+        List<Reserva> reservas = reservaRepository.findAll();
+
+        return reservas.stream()
+                .map(r -> new ReservaDto(
+                        r.getHorario().toString(),
+                        r.getStatusMesa().name(),
+                        r.getCliente() != null ? r.getCliente().getName() : null,
+                        r.getCliente() != null ? r.getCliente().getId() : null
+                ))
+                .toList();
+    }
+
 }
