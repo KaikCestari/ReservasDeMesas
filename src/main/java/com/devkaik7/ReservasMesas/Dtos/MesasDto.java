@@ -4,6 +4,7 @@ public class MesasDto {
     private Long numero;
     private Long capacidade;
 
+
     public MesasDto() {
     }
 
@@ -11,6 +12,7 @@ public class MesasDto {
         this.numero = numero;
         this.capacidade = capacidade;
     }
+
 
     public Long getNumero() {
         return numero;
@@ -27,4 +29,6 @@ public class MesasDto {
     public void setCapacidade(Long capacidade) {
         this.capacidade = capacidade;
     }
+
+
 }
