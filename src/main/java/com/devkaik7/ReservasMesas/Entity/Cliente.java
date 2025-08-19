@@ -23,12 +23,11 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(Long id, String name, String email, String telefone, Reserva reserva) {
+    public Cliente(Long id, String name, String email, String telefone) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.telefone = telefone;
-        this.reserva = reserva;
     }
 
     public Long getId() {

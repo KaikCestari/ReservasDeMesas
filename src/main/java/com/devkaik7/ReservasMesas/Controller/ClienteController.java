@@ -7,10 +7,9 @@ import com.devkaik7.ReservasMesas.Entity.Cliente;
 import com.devkaik7.ReservasMesas.Services.ClienteServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value = ("/cliente"))
@@ -23,6 +22,11 @@ public class ClienteController {
     public ResponseEntity<Cliente> registrarCliente(@RequestBody ClienteDto dto) {
         Cliente cliente = services.registrarCliente(dto);
         return ResponseEntity.ok(cliente);
+    }
+
+    @GetMapping
+    public List<ClienteDto> listar(){
+return  services.listarCliente();
     }
 
 }
