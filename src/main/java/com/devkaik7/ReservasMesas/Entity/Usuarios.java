@@ -17,13 +17,22 @@ public class Usuarios implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private  String nome;
+    private  String login;
 
     private String email;
 
     private String senha;
 
     private UsuarioRoles role;
+
+    public Usuarios() {
+    }
+
+    public Usuarios( String email, String senha, UsuarioRoles role) {
+        this.email = email;
+        this.senha = senha;
+        this.role = role;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -59,5 +68,45 @@ public class Usuarios implements UserDetails {
     @Override
     public boolean isEnabled() {
         return UserDetails.super.isEnabled();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public UsuarioRoles getRole() {
+        return role;
+    }
+
+    public void setRole(UsuarioRoles role) {
+        this.role = role;
     }
 }
