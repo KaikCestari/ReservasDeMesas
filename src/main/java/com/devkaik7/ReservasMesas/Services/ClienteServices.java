@@ -45,6 +45,15 @@ public class ClienteServices {
                 .orElseThrow(()-> new IllegalArgumentException("Impossivel encontrar cliente"));
         clienteRepository.delete(cliente);
     }
+    public  Cliente atualizarCliente(Long id,ClienteDto dto){
+        Cliente cliente = clienteRepository.findById(id)
+                .orElseThrow(()-> new IllegalArgumentException("Usuario nao existe"));
+        cliente.setEmail(dto.getEmail());
+        cliente.setName(dto.getName());
+        cliente.setTelefone(dto.getTelefone());
+        cliente.setId(dto.getId());
+        return clienteRepository.save(cliente);
+        }
 
 
 
