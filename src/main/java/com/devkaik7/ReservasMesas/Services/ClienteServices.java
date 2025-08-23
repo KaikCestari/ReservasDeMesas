@@ -51,7 +51,7 @@ public class ClienteServices {
         cliente.setEmail(dto.getEmail());
         cliente.setName(dto.getName());
         cliente.setTelefone(dto.getTelefone());
-        cliente.setId(dto.getId());
+        cliente.setId(id);
         return clienteRepository.save(cliente);
         }
 

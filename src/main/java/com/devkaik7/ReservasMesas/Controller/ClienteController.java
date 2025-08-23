@@ -29,10 +29,16 @@ public class ClienteController {
 return  services.listarCliente();
     }
 
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletar(@PathVariable Long id){
         services.deletar(id);
         return ResponseEntity.noContent().build();
+    }
+    @PutMapping("/{id}")
+            public ResponseEntity<Cliente> atualizar(@PathVariable Long id,@RequestBody ClienteDto dto){
+        Cliente cliente = services.atualizarCliente(id, dto);
+        return ResponseEntity.ok(cliente);
     }
 
 
