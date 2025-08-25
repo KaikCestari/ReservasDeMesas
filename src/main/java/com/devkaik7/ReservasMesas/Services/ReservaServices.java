@@ -57,12 +57,12 @@ public class  ReservaServices {
         }
         Reserva reserva = reservaRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Reserva não encontrada com ID: " + id));
-        // Desassocia a reserva do cliente antes de deletar
+
         Cliente cliente = reserva.getCliente();
         if (cliente != null) {
             cliente.setReserva(null);
         }
-        // Apaga apenas a reserva
+
         reservaRepository.delete(reserva);
     }
 }
