@@ -5,13 +5,13 @@ import com.devkaik7.ReservasMesas.Entity.Pagamentos;
 import com.devkaik7.ReservasMesas.Services.PagamentoServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value = ("/pagamento"))
+@CrossOrigin(origins = "http://localhost:3000")
 public class PagamentoController {
 
     @Autowired
@@ -21,5 +21,9 @@ public class PagamentoController {
     public ResponseEntity<Pagamentos> newPagamento(@RequestBody PagamentoDto dto){
         Pagamentos pagamentos = services.postarPagamento(dto);
         return ResponseEntity.ok(pagamentos);
+    }
+    @GetMapping
+    public List<PagamentoDto> listarPagamentos(){
+        return services.listarPagamentos();
     }
 }

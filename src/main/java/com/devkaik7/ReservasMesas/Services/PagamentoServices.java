@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalTime;
+import java.util.List;
 
 @Service
 public class PagamentoServices {
@@ -30,6 +31,15 @@ pagamentos.setMetodo(MetodoPagamento.valueOf(dto.getMetodoPagamento()));
 pagamentos.setReserva(reserva);
 pagamentos.setStatusPagamento(StatusPagamento.valueOf(dto.getStatusPagamento()));
 return repository.save(pagamentos);
+    }
+    public List<PagamentoDto> listarPagamentos() {
+        List<Pagamentos> pagamentos = repository.findAll();
+        if (pagamentos.isEmpty()){
+            throw new IllegalArgumentException("Impossivel encontrar pagamento");
+        }
+        return pagamentos.stream()
+                .map(p -> new PagamentoDto(p.getValor(), p.getStatusPagamento().name(), p.getMetodo().name(), p.getData(), p.getReserva().getId()))
+                .toList();
     }
 
     }

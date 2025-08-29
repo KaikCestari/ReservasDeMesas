@@ -22,15 +22,18 @@ public class Pagamentos {
     private StatusPagamento statusPagamento;
 private LocalTime data;
 
+private Long valor;
+
     public Pagamentos() {
     }
 
-    public Pagamentos(Long id, Reserva reserva, MetodoPagamento metodo, StatusPagamento statusPagamento, LocalTime data) {
+    public Pagamentos(Long id, Reserva reserva, MetodoPagamento metodo, StatusPagamento statusPagamento, LocalTime data, Long valor) {
         this.id = id;
         this.reserva = reserva;
         this.metodo = metodo;
         this.statusPagamento = statusPagamento;
         this.data = data;
+        this.valor = valor;
     }
 
     public Long getId() {
@@ -74,4 +77,11 @@ private LocalTime data;
         this.data = data;
     }
 
+    public Long getValor() {
+        return valor;
+    }
+
+    public void setValor(Long valor) {
+        this.valor = valor;
+    }
 }
