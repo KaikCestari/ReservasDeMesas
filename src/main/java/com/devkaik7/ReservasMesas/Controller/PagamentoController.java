@@ -26,4 +26,9 @@ public class PagamentoController {
     public List<PagamentoDto> listarPagamentos(){
         return services.listarPagamentos();
     }
+    @DeleteMapping
+    public ResponseEntity<Void> deletarPagamentos(Long id){
+  services.deletarPagamentos(id);
+  return  ResponseEntity.noContent().build();
+    }
 }
